@@ -1,22 +1,6 @@
  using (SqlConnection connt = new SqlConnection(ConfigurationManager.ConnectionStrings["MyDb"].ConnectionString)) 
                 {
-                    connt.Open();
-               
-                    string selected = "select * from  ProductDets where ProdTitle= '" + SelectedValue + "'";
-                    SqlCommand cmde = new SqlCommand(selected, connt);
-                    SqlDataReader sd = cmde.ExecuteReader();
-                 
-                    if (sd.HasRows)
-                    {
-                        sd.Read();
-
-                        int ProdId = sd.GetInt32(0);
-                        prod = ProdId;
-                        Session["ProdId"] = prod;
-                        ViewBag.ProductDescrp = Convert.ToString(sd.GetValue(2));
-                        ViewBag.IntialPrice = Convert.ToString(sd.GetValue(3));
-                        ViewBag.CreatedBy = Convert.ToString(sd.GetValue(5));
-
+                   
                         sd.Close();
                     }
 
